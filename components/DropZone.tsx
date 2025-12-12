@@ -114,9 +114,9 @@ export const DropZone: React.FC<DropZoneProps> = ({
 
              <div className={clsx("flex flex-col items-center gap-2", (stats?.images || 0) > 0 ? "text-spine-success" : "text-gray-500")}>
                 <div className={clsx("p-3 rounded-full", (stats?.images || 0) > 0 ? "bg-spine-success/20" : "bg-gray-800")}>
-                   {stats?.images ? <CheckCircle size={24} /> : <ImageIcon size={24} />}
+                   {(stats?.images || 0) > 0 ? <CheckCircle size={24} /> : <ImageIcon size={24} />}
                 </div>
-                <span className="text-xs font-bold uppercase">{(stats?.images || 0) > 0 ? `${stats?.images} Images` : "No Images"}</span>
+                <span className="text-xs font-bold uppercase">{(stats?.images || 0)} Images</span>
              </div>
           </div>
         ) : (

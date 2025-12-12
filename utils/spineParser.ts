@@ -398,7 +398,7 @@ export function analyzeSpineData(
 
   const usedFileKeys = new Set<string>();
   Object.values(skinMap).forEach(slotAttachments => {
-     Object.values(slotAttachments).forEach(attachmentList => {
+     Object.values(slotAttachments as Record<string, AttachmentInfo[]>).forEach(attachmentList => {
         attachmentList.forEach(att => {
            // EXCLUSION: Ignore 'clipping' and 'path' attachments for unused asset check
            if (att.type === 'clipping' || att.type === 'path') return;
