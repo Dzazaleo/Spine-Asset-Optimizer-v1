@@ -2,7 +2,6 @@
 import React from 'react';
 import { ViewerData } from '../types';
 import { FileText, AlertTriangle, Layers, Zap, Bone, Clock, Shield, MessageSquare, Image, Film } from 'lucide-react';
-import clsx from 'clsx';
 
 // Declare global window property for the embedded data
 declare global {

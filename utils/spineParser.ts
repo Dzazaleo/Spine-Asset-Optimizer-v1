@@ -14,7 +14,8 @@ export function extractCanonicalDimensions(json: SpineJson): Map<string, { width
     // Iterate slots
     Object.values(skin.attachments).forEach(slotAttachments => {
       // Iterate attachments in slot
-      Object.entries(slotAttachments).forEach(([attName, data]) => {
+      // Cast slotAttachments to Record<string, any> to satisfy TS compiler (unknown type error)
+      Object.entries(slotAttachments as Record<string, any>).forEach(([attName, data]) => {
          const attachment = data as SpineAttachmentData;
          // Region and Mesh attachments usually have width/height.
          // We use the 'path' property if available, otherwise 'name' (the key).

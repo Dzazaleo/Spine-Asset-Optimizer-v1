@@ -14,7 +14,7 @@ import { analyzeSpineData, extractCanonicalDimensions } from './utils/spineParse
 import { calculateOptimizationTargets, generateOptimizedZip } from './utils/optimizer';
 import { parseAtlas } from './utils/atlasParser';
 import { unpackTextures, UnpackedAsset } from './utils/atlasUnpacker';
-import { Activity, Layers, Search, X, Zap, CheckSquare, RotateCcw, Download, Upload, Map as MapIcon, Film, AlertTriangle } from 'lucide-react';
+import { Activity, Layers, Search, X, Zap, CheckSquare, RotateCcw, Download, Upload, Film, AlertTriangle } from 'lucide-react';
 
 type SortKey = 'path' | 'originalSize' | 'maxRenderSize' | 'sourceAnimation';
 
@@ -272,7 +272,7 @@ export default function App() {
       // Prepare processed assets map for analysis
       // UPDATED: Include source dimensions for mismatch detection
       const processedMap = new Map<string, { width: number, height: number, sourceWidth?: number, sourceHeight?: number, file: File, originalPath: string }>();
-      currentInMemoryImages.forEach((asset: UnpackedAsset, key: string) => {
+      currentInMemoryImages.forEach((asset: UnpackedAsset) => {
           const file = new File([asset.blob], `${asset.name}.png`, { type: 'image/png' });
           const normalizedKey = asset.name.replace(/\\/g, '/').toLowerCase();
           processedMap.set(normalizedKey, {
@@ -405,7 +405,7 @@ export default function App() {
   const processedAssets = useMemo(() => {
     // UPDATED: Include source dimensions in memoized map
     const map = new Map<string, { width: number, height: number, sourceWidth?: number, sourceHeight?: number, file: File, originalPath: string }>();
-    inMemoryImages.forEach((asset: UnpackedAsset, key: string) => {
+    inMemoryImages.forEach((asset: UnpackedAsset) => {
         const file = new File([asset.blob], `${asset.name}.png`, { type: 'image/png' });
         const normalizedKey = asset.name.replace(/\\/g, '/').toLowerCase();
         map.set(normalizedKey, {
