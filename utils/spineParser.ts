@@ -368,7 +368,7 @@ export function analyzeSpineData(
   skinsArray.forEach(skin => {
     if (!skin.attachments) return;
     Object.values(skin.attachments).forEach(slotAttachments => {
-      Object.values(slotAttachments).forEach(data => {
+      Object.values(slotAttachments as Record<string, any>).forEach(data => {
          const att = data as SpineAttachmentData;
          // Region attachments (no type or type='region') and Mesh attachments (type='mesh')
          // Linked meshes (type='linkedmesh') might assume parent data, but let's check standard ones.
